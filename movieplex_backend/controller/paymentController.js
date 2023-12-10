@@ -26,11 +26,14 @@ export const paymentVerification = async (req, res) => {
       .digest("hex");
     const isAuthentic = expectedSignature === razorpay_signature;
     if (isAuthentic) {
-      res.redirect(`/paymentsuccess?reference=${razorpay_payment_id}`);
+      res.redirect(
+        `http://localhost:5173/paymentsuccess?reference=${razorpay_payment_id}`
+      );
     } else {
       res.status(400).json({ success: false });
     }
     console.log(req.body);
+    res.status(200).json({ success: true });
   } catch (err) {
     console.log(err);
   }
