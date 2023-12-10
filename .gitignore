@@ -12,7 +12,7 @@ node_modules
 
 dist-ssr
 *.local
-
+vercel.json
 movieplex_backend/config
 movieplex_backend/node_modules
 
