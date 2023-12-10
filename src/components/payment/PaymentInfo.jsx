@@ -4,18 +4,17 @@ import theme from "./Theme.js";
 import axios from "axios";
 
 function PaymentInfo() {
-  const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState(0);
 
   const buyMovie = async () => {
     const {
       data: { key },
-    } = await axios.get("http://localhost:4000/api/getkey");
+    } = await axios.get("/api/getkey");
     setAmount(40);
 
     const {
       data: { order },
-    } = await axios.post("http://localhost:4000/api/checkout", {
+    } = await axios.post("/api/checkout", {
       amount,
     });
     console.log(order);
@@ -27,7 +26,7 @@ function PaymentInfo() {
       description: "Movie Seller",
       image: "https://avatars.githubusercontent.com/u/116891171?v=4",
       order_id: order.id,
-      callback_url: "http://localhost:4000/api/paymentverification",
+      callback_url: "http:///api/paymentverification",
       prefill: {
         name: "Gaurav Kumar",
         email: "gaurav.kumar@example.com",
